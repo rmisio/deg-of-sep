@@ -1,0 +1,13 @@
+@import 'styles/variables.scss';
+
+.Team {
+  border-radius: 50%;
+  border: 1px solid $clrLinkBorder;
+  padding: 5px;
+
+  .Team-innerWrap {
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+  }
+}

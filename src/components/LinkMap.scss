@@ -1,0 +1,59 @@
+.LinkMap {
+  display: flex;
+  align-items: center;
+
+  & > * {
+    flex-shrink: 0;
+  }
+
+  &.LinkMap-orientation-top {
+    flex-direction: column;
+  }
+
+  .LinkMap-playerWrap {
+    position: relative;
+
+    .LinkMap-playerWrapNameArea {
+      position: absolute;
+      bottom: -10px;
+      left: -20px;
+      right: -20px;
+      transform: translateY(100%);
+      display: flex;
+      justify-content: center;
+      // background-color: blue;
+
+      .LinkMap-playerWrapNameAreaInner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        // background-color: pink;
+
+        .LinkMap-playerWrapNum {
+          margin-right: 5px;
+          padding-right: 5px;
+          border-right: 1px solid #000;
+          align-self: start;
+          height: 100%;
+        }
+
+        .LinkMap-playerWrapName {
+          // width: min-content;
+          // span {
+          //   font-weight: bold;
+
+          //   &:first-child {
+          //     font-weight: normal;
+          //   }
+          // }
+        }
+      }
+    }
+  }
+
+  // &.LinkMap-orientation-left {
+  //   .LinkConnector {
+  //     transform: rotate(90deg);
+  //   }
+  // }
+}

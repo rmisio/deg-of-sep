@@ -1,0 +1,66 @@
+@import 'styles/variables.scss';
+
+.Player {
+  border-radius: 50%;
+  border: 1px solid $clrLinkBorder;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: #999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0.5;
+    background-image: url("../img/dot-bg2.png");
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -2;
+  }
+
+  .Player-innerWrap {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    border: 1px solid $clrLinkBorder;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 4px;
+    position: relative;
+
+    // #CE1141
+    // https://stats.nba.com/media/img/teams/logos/HOU_logo.svg
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: -1;      
+      // background: #00d4ff;
+      background: #CE1141;
+      border-radius: 50%;
+      background: linear-gradient(106deg, darken(rgba(206,17,65, 1), 10%) 0%, lighten(rgba(206,17,65, 1), 10%) 20%, darken(rgba(206,17,65, 1), 10%) 56%, rgba(206,17,65, 1) 100%);
+      opacity: 0.8;
+      // background-image: url("https://stats.nba.com/media/img/teams/logos/HOU_logo.svg");
+      // background-position: -25px -25px;
+      // background-repeat: no-repeat;
+    }
+  }
+}
