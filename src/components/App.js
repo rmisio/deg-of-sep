@@ -3,65 +3,61 @@ import teams from 'data/teams';
 import rosters from 'data/rosters';
 import players from 'data/players';
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import findLink from 'workerize-loader!util/findLink';
+import FindLinkWorker from 'workerize-loader!util/findLink';
 import LinkMap from 'components/LinkMap';
 import NodeSelect from 'components/nodeSelect/NodeSelect';
 
 function App() {
-  const [linkData, setLinkData] = useState([]);
+  const [linkMapData, setLinkMapData] = useState([]);
 
-  // const endPlayer = '77035';
-  // const before = performance.now();
-  // const moo = findLink('1629632', endPlayer);
-  // window.moo = moo;
-  // console.log(performance.now() - before);
+  const handlePlayerChange = async selectedPlayers => {
+    let lData = null;
 
-  // const ldData = linkData.map(ld => {
-  //   const roster = rosters[ld.rosterID];
-  //   const team = roster && roster.team
-  //   const player = ld.playerID && players[ld.playerID];
+    if (selectedPlayers && selectedPlayers.length === 2) {
+      const findLinkWorker = FindLinkWorker();
+      const link = await findLinkWorker.findLink(selectedPlayers[0].id, selectedPlayers[1].id)
 
-  //   return {
-  //     ...ld,
-  //     teamAbbr: (team && teams[team] && teams[team].abbr) || '',
-  //     number: player ? player.NUM : '',
-  //     name: player ? player.name : '',
-  //   };
-  // });
+      lData = link.map(ld => {
+        const roster = rosters[ld.rosterID];
+        const team = roster && roster.team
+        const player = ld.playerID && players[ld.playerID];
 
-  // const endPlayerData = players[endPlayer];
+        return {
+          ...ld,
+          teamAbbr: (team && teams[team] && teams[team].abbr) || '',
+          number: player ? player.NUM : '',
+          name: player ? player.name : '',
+        };
+      });
 
-  // ldData.push({
-  //   playerID: endPlayer,
-  //   number: endPlayerData ? endPlayerData.NUM : '',
-  //   name: endPlayerData ? endPlayerData.name : '',
-  // });
+      const endPlayerData = players[selectedPlayers[1].id];
 
-  const handlePlayerChange = players => {
-    console.dir(players);
-    const lData = [];
-
-    if (players && players.length === 2) {
-      console.log('how bout dem cowboys!?');
+      lData.push({
+        playerID: endPlayerData.playerID,
+        number: endPlayerData ? endPlayerData.NUM : '',
+        name: endPlayerData ? endPlayerData.name : '',
+      });
     }
 
-    setLinkData(lData);
+    setLinkMapData(lData);
   };
 
-  /*
+  const linkMap = linkMapData ?
+    (
       <LinkMap
-        linkData={ldData}
+        linkData={linkMapData}
         playerSize={90}
         teamSize={65}
         orientation="left"
-      />
-  */  
+      />      
+    ) : null;
 
   return (
     <div className="App">
       <NodeSelect
         onPlayerChange={handlePlayerChange}
       />
+      {linkMap}
     </div>
   );
 }

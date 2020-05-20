@@ -54,7 +54,7 @@ const findDirectLink = (playerA, playerB) => {
   }
 }
 
-const findLink = (playerA, playerB) => {
+export function findLink(playerA, playerB) {
   let endNode = null;
   let teammates = [
     new PlayerNode({
@@ -125,5 +125,3 @@ const findLink = (playerA, playerB) => {
 
   return null;
 };
-
-export default findLink;

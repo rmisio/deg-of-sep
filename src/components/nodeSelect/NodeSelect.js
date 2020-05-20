@@ -103,7 +103,7 @@ function NodeSelect(props) {
           <button
             className="btnAsLink"
             onClick={handleClearPlayers}
-          >Clear</button>        
+          >Start Over</button>        
         </div>
       ) : null;
     selectedPlayers = (
