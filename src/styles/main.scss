@@ -1,3 +1,6 @@
+@import './variables.scss';
+@import './components/buttons.scss';
+
 html {
   box-sizing: border-box;
 }
@@ -10,4 +13,24 @@ html {
 
 body {
   padding: 20px;
+  font-size: 16px;
+}
+
+input[type=text], textarea {
+  // TODO use color class
+  border: 1px solid #000;
+  border-radius: 3px;
+  width: 100%;
+  padding: 7px 10px;
+  line-height: 1.25rem;
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  font-size: 1rem;
+
+  &:focus {
+    // todo: theme appropo color;
+    // todo: turn this back on in a auto suggest friendly way;
+    // box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    // border: 1px solid rgba(81, 203, 238, 1);
+  }
 }

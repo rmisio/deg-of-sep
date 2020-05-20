@@ -15,6 +15,7 @@ function getPlayerNameMap() {
       if (!name) return;
 
       const names = name.split(' ');
+      names.push(name);
 
       names.forEach(name => {
         const n = name.toUpperCase();
@@ -37,6 +38,7 @@ export function searchPlayersByName(term) {
 
   const sTerm = term.toUpperCase();
   let results = [];
+  const resultIDs = [];
   const players = getPlayerNameMap();
 
   // Given that we only have about 4k or so players, the following approach
@@ -46,7 +48,15 @@ export function searchPlayersByName(term) {
   [...players.keys()]
     .forEach(nameKey => {
       if (nameKey.includes(sTerm)) {
-        results = results.concat(players.get(nameKey));
+        const prunedPlayers =
+          players
+            .get(nameKey)
+            .filter(player => {
+              if (resultIDs.includes(player.id)) return false;
+              resultIDs.push(player.id);
+              return true;
+            });
+        results = results.concat(prunedPlayers);
       }
     });
 

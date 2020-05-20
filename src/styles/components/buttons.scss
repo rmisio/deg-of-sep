@@ -1,0 +1,60 @@
+.ctrl {
+  height: 35px;
+  padding: 0 24px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: 1.4rem;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center; // centers icons if they are a child element
+  justify-content: center;
+}
+
+.btn {
+  @extend .ctrl;
+  cursor: pointer;
+  font-weight: 700;
+  transition: border 0.15s ease;
+  text-align: center;
+
+  &:hover:not(.btnRadio, .btnAsLink),
+  &:focus:not(.btnRadio, .btnAsLink) {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:focus:not(.btnRadio) {
+    outline: 0;
+  }
+}
+
+.btnTxt {
+  @extend .btn;
+  text-align: left;
+  border: none;
+  background: none;
+}
+
+.btnTxtOnly {
+  @extend .btnTxt;
+  height: auto;
+  display: inline;
+  font-size: inherit;
+  vertical-align: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  padding: 0;
+}
+
+.btnAsLink {
+  @extend .btnTxtOnly;
+  font-weight: inherit;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

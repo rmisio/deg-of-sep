@@ -1,0 +1,64 @@
+.NodeSelect {
+  .react-autosuggest__container {
+    position: relative;
+    margin-bottom: 15px;
+
+    &.react-autosuggest__container--open {
+      .react-autosuggest__input {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .react-autosuggest__suggestions-container {
+        border: 1px solid #000;
+        border-top: 0;
+      }      
+    }    
+
+    .react-autosuggest__suggestions-container {
+      max-height: 300px;
+      overflow: auto;
+      position: absolute;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+      z-index: 1;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li:last-child {
+          .NodeList-playerSuggestion {
+            border-bottom: 0;
+          }
+        }
+
+        .react-autosuggest__suggestion--highlighted {
+          background-color: #CCC;
+        }
+      }
+
+      .NodeList-playerSuggestion {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #000;
+        padding: 5px 10px;
+
+        .PlayerAvatar {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .NodeList-selectedPlayers {
+    display: flex;
+    align-items: center;
+
+    .SelectedPlayer {
+      margin-right: 20px;
+    }
+  }
+}
