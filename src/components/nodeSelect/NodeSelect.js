@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, {
+  useState,
+} from 'react';
 import { searchPlayersByName } from 'util/searchPlayers';
 import Autosuggest from 'react-autosuggest';
 import PlayerAvatar from 'components/PlayerAvatar';
@@ -93,7 +95,10 @@ function NodeSelect(props) {
 
   let selectedPlayers = null;
 
-  const handleRemoveClick = id => setPlayers(players.filter(p => p.id !== id));
+  const handleRemoveClick = id => {
+    setPlayers(players.filter(p => p.id !== id));
+  }
+
   const handleClearPlayers = () => setPlayers([]);
 
   if (players.length) {

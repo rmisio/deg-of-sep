@@ -55,6 +55,22 @@ const findDirectLink = (playerA, playerB) => {
 }
 
 export function findLink(playerA, playerB) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const boom = Math.random() * (10 - 1) + 1;
+
+      if (boom < 3) {
+        reject(new Error('how dare you!?'));
+      } else if (boom < 6.5)  {
+        resolve(findLink2(playerA, playerB));
+      } else {
+        resolve(null);  
+      }
+    }, 1000);
+  });
+}
+
+export function findLink2(playerA, playerB) {
   let endNode = null;
   let teammates = [
     new PlayerNode({
