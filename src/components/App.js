@@ -116,7 +116,7 @@ function App() {
       resultLine = (
         <p className={resultClass}>
           There are {`${degOfSep === 1 ? 'is ' : 'are '}`}
-          {degOfSep} {`${degOfSep === 1 ? 'degree ' : 'degrees '}`}
+          <span className={`${resultClass}DegOfSep`}>{degOfSep}</span> {`${degOfSep === 1 ? 'degree ' : 'degrees '}`}
           of separation between the players.
         </p>
       );

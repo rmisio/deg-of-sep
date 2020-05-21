@@ -1,0 +1,14 @@
+// TODO: should I mq the font to only larger devices?
+@font-face {
+  font-family: 'roboto';
+  font-weight: 400;
+  src:  url('../font/Roboto-Regular.woff2') format('woff2'),
+        url('../font/Roboto-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'roboto';
+  font-weight: 700;
+  src:  url('../font/Roboto-Bold.woff2') format('woff2'),
+        url('../font/Roboto-Bold.woff') format('woff');
+}

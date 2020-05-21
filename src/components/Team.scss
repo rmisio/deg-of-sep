@@ -2,8 +2,8 @@
 
 .Team {
   border-radius: 50%;
-  border: 1px solid $clrLinkBorder;
-  padding: 5px;
+  border: 1px dashed $clrYellow;
+  padding: 8px;
 
   .Team-innerWrap {
     background-size: contain;

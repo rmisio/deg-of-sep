@@ -9,7 +9,14 @@
 $clrPrimary: #1D428A;
 $clrLinkBorder: #000;
 
-$clrText: hsl(0,0,14.8);
+// TODO: abstract the color names;
+$clrBackground: rgb(251,251,251);
+$clrMaroon: #7b1a32;
+$clrGoldish: #ad6f33;
+$clrText: rgb(51,51,51);
+$clrLink: #1a99aa;
+$clrOrange: #df6c4f;
+$clrYellow: #ecd06f;
 $clrError: red;
 
 // todo: link color;

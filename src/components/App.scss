@@ -16,4 +16,11 @@
   .App-linkMapResultError {
     color: $clrError;
   }
+
+  .App-linkMapResultDegOfSep {
+    color: $clrOrange;
+    font-weight: bold;
+    font-size: larger;
+    border-bottom: 1px dashed #ccc;
+  }
 }

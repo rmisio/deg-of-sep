@@ -8,21 +8,22 @@ function LinkConnector(props) {
   };
 
   // todo: constantize orientations
-  if (props.orientation === 'left') {
-    lcStyle = {
-      ...lcStyle,
-      transform: 'rotate(90deg)',
-      marginLeft: (props.length - props.width) / 2,
-      marginRight: (props.length - props.width) / 2,
-    }
-  }
+  // if (props.orientation === 'left') {
+  //   lcStyle = {
+  //     ...lcStyle,
+  //     transform: 'rotate(90deg)',
+  //     marginLeft: (props.length - props.width) / 2,
+  //     marginRight: (props.length - props.width) / 2,
+  //   }
+  // }
 
   return (
-    <div
+    <svg
       className="LinkConnector"
-      style={lcStyle}
+      // style={lcStyle}
     >
-    </div>
+      <line x1="0" y1="0" x2="50" y2="0" />
+    </svg>
   );
 }
 
