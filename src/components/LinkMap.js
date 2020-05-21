@@ -13,20 +13,28 @@ import './LinkMap.scss';
 function LinkMap(props) {
   const links = [];
 
-  const createPlayer = data => (
-    <div className="LinkMap-playerWrap">
-      <div className="LinkMap-playerWrapNameArea">
-        <div className="LinkMap-playerWrapNameAreaInner">
-          <div className="LinkMap-playerWrapNum">{data.number}</div>
-          <div className="LinkMap-playerWrapName"><span>{data.name.split(' ')[0]}</span> <span>{data.name.split(' ')[1]}</span></div>
+  const createPlayer = data => {
+    const splitName = data.name.split(' ');
+    const fName = splitName[0];
+    const lName = splitName.slice(1).join(' ');
+
+    return (
+      <div className="LinkMap-playerWrap">
+        <div className="LinkMap-playerWrapNameArea">
+          <div className="LinkMap-playerWrapNameAreaInner">
+            <div className="LinkMap-playerWrapNum">{data.number}</div>
+            <div className="LinkMap-playerWrapName">
+              <span>{fName}</span> <span>{lName}</span>
+            </div>
+          </div>
         </div>
+        <Player
+          playerID={data.playerID}
+          size={props.playerSize}
+        />      
       </div>
-      <Player
-        playerID={data.playerID}
-        size={props.playerSize}
-      />      
-    </div>
-  );
+    );
+  };
 
   props.linkData.forEach((link, index) => {
     if (index === props.linkData.length - 1) return;

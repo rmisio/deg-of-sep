@@ -1,24 +1,72 @@
+// TODO: filter out same player twice
+// TODO: cancel link find at appropo times
 import React, { useState } from 'react';
 import { searchPlayersByName } from 'util/searchPlayers';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import FindLinkWorker from 'workerize-loader!util/findLink';
 import Autosuggest from 'react-autosuggest';
 import PlayerAvatar from 'components/PlayerAvatar';
 import SelectedPlayer from './SelectedPlayer';
 import './NodeSelect.scss';
 
 function NodeSelect(props) {
+  const {
+    onFindingLink,
+    onFindingLinkResult,
+    onFindingLinkCancel,
+    onPlayerChange,
+  } = props;
+
   const [suggestions, setSuggestions] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [players, _setPlayers] = useState([]);
+  const [findingLink, setFindingLink] = useState(false);
+  const [degOfSep, setDegOfSep] = useState(null);
 
-  const setPlayers = newPlayers => {
+  const setPlayers = async newPlayers => {
     // make sure to not mutate players when calling this function
     _setPlayers(newPlayers);
 
-    if (
-      newPlayers !== players &&
-      typeof props.onPlayerChange === 'function'
-    ) {
-      props.onPlayerChange(newPlayers);
+    if (newPlayers !== players) {
+      if (typeof onPlayerChange === 'function') {
+        onPlayerChange(newPlayers);
+      }
+
+      if (newPlayers && newPlayers.length === 2) {
+        setFindingLink(true);
+
+        if (typeof onFindingLink === 'function') {
+          onFindingLink();
+        }
+
+        const findLinkWorker = FindLinkWorker();
+        let link = null;
+        let linkFindError = null;
+
+        try {
+          link =
+            await findLinkWorker
+              .findLink(newPlayers[0].id, newPlayers[1].id);
+        } catch (e) {
+          // TODO: test this
+          linkFindError = e;
+          setDegOfSep(null);
+        }
+
+        setFindingLink(false);
+
+        if (typeof onFindingLinkResult === 'function') {
+          onFindingLinkResult(linkFindError || link);
+        }
+
+        if (linkFindError) return;
+
+        setDegOfSep(link === null ? Infinity: link.length);
+      } else {
+        // TODO: what about a cancel link
+        setFindingLink(false);
+        setDegOfSep(null);
+      }
     }
   };
 
@@ -96,6 +144,15 @@ function NodeSelect(props) {
   const handleRemoveClick = id => setPlayers(players.filter(p => p.id !== id));
   const handleClearPlayers = () => setPlayers([]);
 
+  const createSelectedPlayer = pData => (
+    <SelectedPlayer
+      id={pData.id}
+      key={pData.id}
+      name={pData.name}
+      onRemoveClick={() => handleRemoveClick(pData.id)}
+    />    
+  );
+
   if (players.length) {
     const btnClear = players.length === 2 ?
       (
@@ -106,23 +163,50 @@ function NodeSelect(props) {
           >Start Over</button>        
         </div>
       ) : null;
-    selectedPlayers = (
-      <div className="NodeList-selectedPlayers">
-        {
-          players.map(player =>
-            <SelectedPlayer
-              id={player.id}
-              key={player.id}
-              name={player.name}
-              onRemoveClick={() => handleRemoveClick(player.id)}
-            />
-          )
-        }
-        {btnClear}
-      </div>
-    );
+
+    if (players.length < 2) {
+      selectedPlayers = (
+        <div className="NodeList-selectedPlayers">
+          {createSelectedPlayer(players[0])}
+        </div>
+      );
+    } else if (players.length === 2) {
+      if (findingLink) {
+        selectedPlayers = (
+          <div className="NodeList-selectedPlayers NodeList-selectedPlayersFindingLink">
+            {players.map(player => createSelectedPlayer(player))}
+            {btnClear}
+          </div>
+        );
+      } else if (degOfSep === Infinity) {
+        selectedPlayers = (
+          <div className="NodeList-selectedPlayers">
+            <span>There is no link between</span>
+            <span>{createSelectedPlayer(players[0])}</span>
+            <span>and</span>
+            <span>{createSelectedPlayer(players[1])}</span>
+            <span className="NodeList-selectedPlayersPeriod">.</span>
+          </div>
+        );
+      } else {
+        selectedPlayers = (
+          <div className="NodeList-selectedPlayers">
+            <span>There {degOfSep === 1 ? 'is' : 'are'}</span>
+            <span className="NodeList-selectedPlayersDegOfSepCount">
+              {degOfSep}
+            </span>
+            <span>degrees of separation between</span>
+            <span>{createSelectedPlayer(players[0])}</span>
+            <span>and</span>
+            <span>{createSelectedPlayer(players[1])}</span>
+            <span className="NodeList-selectedPlayersPeriod">.</span>
+          </div>
+        );
+      }
+    }
   }
   
+  // TODO: move margin to css file.
   return (
     <div
       className="NodeSelect"

@@ -53,12 +53,33 @@
     }
   }
 
+  // TODO: style me all purty;
+  // .NodeList-selectedPlayersDegOfSepCount
+  // .NodeList-selectedPlayersFindingLink
   .NodeList-selectedPlayers {
-    display: flex;
-    align-items: center;
+    // & > span {
+    //   display: inline-block;
+    //   margin-right: 5px;
+    // }
 
     .SelectedPlayer {
-      margin-right: 20px;
+      position: relative;
+      top: 11px;
+      margin: 0 13px 0 5px;
+    }
+
+    &.NodeList-selectedPlayersFindingLink {
+      display: flex;
+      align-items: center;
+
+      .SelectedPlayer {
+        margin-right: 20px;
+        margin-left: 0;
+      }      
+    }
+
+    .NodeList-selectedPlayersPeriod {
+      
     }
   }
 }

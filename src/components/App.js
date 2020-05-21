@@ -1,3 +1,5 @@
+// todo: allow for max 3 lines for name in landscape view
+
 import React, { useState } from 'react';
 import teams from 'data/teams';
 import rosters from 'data/rosters';
@@ -6,9 +8,12 @@ import players from 'data/players';
 import FindLinkWorker from 'workerize-loader!util/findLink';
 import LinkMap from 'components/LinkMap';
 import NodeSelect from 'components/nodeSelect/NodeSelect';
+import { ReactComponent as LoadingSpinner } from 'img/three-dots.svg';
+import './App.scss';
 
 function App() {
   const [linkMapData, setLinkMapData] = useState([]);
+  const [loadingLinkMap, setLoadingLinkMap] = useState(false);
 
   const handlePlayerChange = async selectedPlayers => {
     let lData = null;
@@ -16,6 +21,8 @@ function App() {
     if (selectedPlayers && selectedPlayers.length === 2) {
       const findLinkWorker = FindLinkWorker();
       const link = await findLinkWorker.findLink(selectedPlayers[0].id, selectedPlayers[1].id)
+
+      if (!Array.isArray(link)) return;
 
       lData = link.map(ld => {
         const roster = rosters[ld.rosterID];
@@ -52,12 +59,23 @@ function App() {
       />      
     ) : null;
 
+  const loadingSpinner = loadingLinkMap ?
+    (
+      <LoadingSpinner
+        fill="#000"
+        className="App-linkMapLoading"
+      />
+    ): null;
+
   return (
     <div className="App">
       <NodeSelect
         onPlayerChange={handlePlayerChange}
       />
-      {linkMap}
+      <div className="App-linkMapWrap">
+        {loadingSpinner}
+        {linkMap}
+      </div>
     </div>
   );
 }

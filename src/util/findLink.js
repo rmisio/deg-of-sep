@@ -55,6 +55,14 @@ const findDirectLink = (playerA, playerB) => {
 }
 
 export function findLink(playerA, playerB) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(null);
+    }, 3000);
+  });
+}
+
+export function findLink2(playerA, playerB) {
   let endNode = null;
   let teammates = [
     new PlayerNode({
