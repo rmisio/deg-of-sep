@@ -7,36 +7,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  width: 90px;
+  height: 90px;
 
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   // background-color: #999;
-  //   border: 1px solid #999;
-  //   top: 0;
-  //   left: 0;
-  //   bottom: 0;
-  //   right: 0;
-  //   z-index: -3;
-  // }
-
-  // &::after {
-  //   // content: '';
-  //   position: absolute;
-  //   opacity: 0.5;
-  //   background-image: url("../img/dot-bg2.png");
-  //   top: 0;
-  //   left: 0;
-  //   bottom: 0;
-  //   right: 0;
-  //   z-index: -2;
-  // }
 
   .Player-innerWrap {
     width: calc(100% - 10px);
     height: calc(100% - 10px);
-    // border: 1px solid $clrLinkBorder;
     border: 1px dashed #777;
     border-radius: 50%;
     background-size: cover;
@@ -44,19 +21,5 @@
     background-position: center 4px;
     background-color: #c0bbc2;
     position: relative;
-
-    // &::after {
-    //   // content: '';
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   bottom: 0;
-    //   right: 0;
-    //   z-index: -1;      
-    //   background: #CE1141;
-    //   border-radius: 50%;
-    //   background: linear-gradient(106deg, darken(rgba(206,17,65, 1), 10%) 0%, lighten(rgba(206,17,65, 1), 10%) 20%, darken(rgba(206,17,65, 1), 10%) 56%, rgba(206,17,65, 1) 100%);
-    //   opacity: 0.8;
-    // }
   }
 }

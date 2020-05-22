@@ -6,10 +6,6 @@ function Team(props) {
   return (
     <div
       className="Team"
-      style={{
-        width: props.size,
-        height: props.size,
-      }}
     >
       <div
         className="Team-innerWrap"

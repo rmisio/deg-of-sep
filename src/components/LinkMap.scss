@@ -1,33 +1,37 @@
 .LinkMap {
   display: flex;
   align-items: center;
+  flex-direction: column;
 
-  & > * {
-    flex-shrink: 0;
-  }
-
-  &.LinkMap-orientation-top {
-    flex-direction: column;
-  }
+  // & > * {
+  //   flex-shrink: 0;
+  // }
 
   .LinkMap-playerWrap {
-    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;    
+
+    // position: relative;
 
     .LinkMap-playerWrapNameArea {
-      position: absolute;
-      bottom: -10px;
-      left: -20px;
-      right: -20px;
-      transform: translateY(100%);
+      // position: absolute;
+      // bottom: -10px;
+      // left: -20px;
+      // right: -20px;
+      // transform: translateY(100%);
       display: flex;
       justify-content: center;
-      // background-color: blue;
+      margin-top: 10px;
+      font-weight: 300;
+
+      // todo: put a max width here and width: min content on break
+      // also on tight mq sizes;
 
       .LinkMap-playerWrapNameAreaInner {
         display: flex;
         align-items: center;
         justify-content: center;
-        // background-color: pink;
 
         .LinkMap-playerWrapNum {
           margin-right: 5px;
@@ -50,10 +54,4 @@
       }
     }
   }
-
-  // &.LinkMap-orientation-left {
-  //   .LinkConnector {
-  //     transform: rotate(90deg);
-  //   }
-  // }
 }

@@ -4,13 +4,7 @@ import './Player.scss';
 
 function Player(props) {
   return (
-    <div
-      className="Player"
-      style={{
-        width: props.size,
-        height: props.size,
-      }}
-    >
+    <div className="Player">
       <div
         className="Player-innerWrap"
         style={{

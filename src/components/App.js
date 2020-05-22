@@ -1,3 +1,7 @@
+// TODO: There are is 1 degree of separation between the players.
+// TODO: There are are ...
+
+
 import React, { useState } from 'react';
 import teams from 'data/teams';
 import rosters from 'data/rosters';
@@ -77,9 +81,6 @@ function App() {
     (
       <LinkMap
         linkData={linkMapData}
-        playerSize={90}
-        teamSize={65}
-        orientation="left"
       />      
     ) : null;
 
