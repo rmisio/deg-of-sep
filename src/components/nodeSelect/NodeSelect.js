@@ -2,7 +2,8 @@ import React, {
   useState,
 } from 'react';
 import { searchPlayersByName } from 'util/searchPlayers';
-import Autosuggest from 'react-autosuggest';
+// import Autosuggest from 'react-autosuggest';
+import Autosuggest from 'lib/react-autosuggest';
 import PlayerAvatar from 'components/PlayerAvatar';
 import SelectedPlayer from './SelectedPlayer';
 import './NodeSelect.scss';
@@ -45,7 +46,11 @@ function NodeSelect(props) {
             }
 
             return 0;            
-          });
+          })
+          .map(suggestion => ({
+            ...suggestion,
+            key: suggestion.id,
+          }));
     }
 
     setSuggestions(suggestions);

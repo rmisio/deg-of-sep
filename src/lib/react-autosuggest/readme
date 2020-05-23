@@ -1,0 +1,5 @@
+I needed to bring the lib in and manually fudge it due to this issue :(
+
+https://github.com/moroshko/react-autosuggest/pull/745
+
+(made from 10.0.2)

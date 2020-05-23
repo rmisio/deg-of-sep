@@ -3,5 +3,12 @@
   background-size: cover;
   background-position: center 3px;
   background-repeat: no-repeat;
-  border: 1px solid #CCC;
+  border: 1px dashed #777;
+  background-color: #cdc9cf;
+
+  &.PlayerAvatar-defaultAvatar {
+    background-color: #c0bbc2;
+    background-size: 35%;
+    background-position: center;
+  }
 }

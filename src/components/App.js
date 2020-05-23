@@ -1,5 +1,9 @@
-// TODO: There are is 1 degree of separation between the players.
-// TODO: There are are ...
+// TODO: make readme. also for tetris.
+// TODO: flex no shrink player avatar
+// TODO: shorten placehold on small screens.
+// TODO: test with long names.
+// TODO: add in intro
+// TODO: surge deploy
 
 
 import React, { useState } from 'react';
@@ -116,7 +120,7 @@ function App() {
       const degOfSep = linkMapData.length - 1;
       resultLine = (
         <p className={resultClass}>
-          There are {`${degOfSep === 1 ? 'is ' : 'are '}`}
+          There {`${degOfSep === 1 ? 'is ' : 'are '}`}
           <span className={`${resultClass}DegOfSep`}>{degOfSep}</span> {`${degOfSep === 1 ? 'degree ' : 'degrees '}`}
           of separation between the players.
         </p>
