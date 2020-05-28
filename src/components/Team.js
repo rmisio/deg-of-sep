@@ -1,4 +1,4 @@
-import { getTeamImageUrl } from 'util/url';
+import { getTeamImageUrl } from 'core/url';
 import React from 'react';
 import './Team.scss';
 

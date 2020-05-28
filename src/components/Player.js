@@ -1,4 +1,4 @@
-import { getPlayerImageUrl } from 'util/url';
+import { getPlayerImageUrl } from 'core/url';
 import React from 'react';
 import PlayerAvatar from 'components/PlayerAvatar';
 import './Player.scss';

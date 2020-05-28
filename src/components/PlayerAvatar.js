@@ -4,7 +4,7 @@ import React, {
   useCallback,
   useRef,
 } from 'react';
-import { getPlayerImageUrl } from 'util/url';
+import { getPlayerImageUrl } from 'core/url';
 import DefaultAvatar from 'img/nba-logoman-word-white.svg';
 import './PlayerAvatar.scss';
 

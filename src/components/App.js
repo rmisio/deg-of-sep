@@ -4,14 +4,17 @@
 // TODO: test with long names.
 // TODO: add in intro
 // TODO: surge deploy
-
+// TODO: ZION to Dr J
+// TODO: Baby blue, I heart you #CCC
+// TODO: update index.html + meta in there
+// TODO: lint this guy
 
 import React, { useState } from 'react';
 import teams from 'data/teams';
 import rosters from 'data/rosters';
 import players from 'data/players';
 // eslint-disable-next-line import/no-webpack-loader-syntax
-import FindLinkWorker from 'workerize-loader!util/findLink';
+import FindLinkWorker from 'workerize-loader!core/findLink';
 import LinkMap from 'components/LinkMap';
 import { ReactComponent as FindingLinkSpinner } from 'img/three-dots.svg';
 import NodeSelect from 'components/nodeSelect/NodeSelect';
@@ -44,9 +47,6 @@ function App() {
         findLinkError = e;
         console.error(e);
       }
-
-      console.log('how bout dem beavers');
-      console.dir(link);
 
       if (link === null && !findLinkError) {
         // There is no link between the players

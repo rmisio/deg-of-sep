@@ -1,8 +1,7 @@
 import React, {
   useState,
 } from 'react';
-import { searchPlayersByName } from 'util/searchPlayers';
-// import Autosuggest from 'react-autosuggest';
+import { searchPlayersByName } from 'core/searchPlayers';
 import Autosuggest from 'lib/react-autosuggest';
 import PlayerAvatar from 'components/PlayerAvatar';
 import SelectedPlayer from './SelectedPlayer';
@@ -25,7 +24,9 @@ function NodeSelect(props) {
     }
   };
 
-  const handleSuggestionsFetchRequested = ({ value }) => {
+  const handleSuggestionsFetchRequested = ({ value, reason }) => {
+    if (reason !== 'input-changed')  return;
+
     const inputVal = value.trim();
     let suggestions = [];
 
