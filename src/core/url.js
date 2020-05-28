@@ -8,7 +8,3 @@ export function getPlayerImageUrl(playerID, width, height=width) {
 
   return base + size + suffix;
 }
-
-export function getTeamImageUrl(teamAbbr) {
-  return `https://stats.nba.com/media/img/teams/logos/${teamAbbr}_logo.svg`;
-}

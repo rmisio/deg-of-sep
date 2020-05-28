@@ -8,7 +8,7 @@ function LinkMap(props) {
   let links = [];
 
   const createPlayer = data => (
-    <div className="LinkMap-playerWrap">
+    <div className="LinkMap-playerWrap" key={data.playerID}>
       <Player
         playerID={data.playerID}
         size={props.playerSize}
@@ -36,9 +36,9 @@ function LinkMap(props) {
     }
 
     links = links.concat([
-      <LinkConnector />,
-      <Team teamAbbr={link.teamAbbr} />,
-      <LinkConnector />,
+      <LinkConnector key={Math.floor(Math.random() * 1000) + Date.now()} />,
+      <Team teamAbbr={link.teamAbbr} key={link.teamAbbr} />,
+      <LinkConnector key={Math.floor(Math.random() * 1000) + Date.now()} />,
     ]);
 
     const nextPlayer = props.linkData[index + 1];

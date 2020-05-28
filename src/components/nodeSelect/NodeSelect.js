@@ -78,6 +78,8 @@ function NodeSelect(props) {
     setSuggestions([]);
   };
 
+  const handleSuggestionClearRequested = () => setSuggestions([]);
+
   const placeholder = players.length === 0 ?
     'Enter a player\'s name (e.g. Lebron James)' :
     'Enter another player\'s name (e.g. Bill Russell)';
@@ -89,6 +91,7 @@ function NodeSelect(props) {
         onSuggestionsFetchRequested={handleSuggestionsFetchRequested}
         renderSuggestion={renderSearchPlayer}
         onSuggestionSelected={handleSuggestionSelected}
+        onSuggestionsClearRequested={handleSuggestionClearRequested}
         getSuggestionValue={getSuggestionValue}
         highlightFirstSuggestion={true}
         inputProps={{
