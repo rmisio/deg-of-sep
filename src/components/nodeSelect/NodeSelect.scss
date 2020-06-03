@@ -53,9 +53,16 @@
     }
   }
 
+  .react-autosuggest__input {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.25rem;
+  }
+
   .NodeList-selectedPlayers {
     display: flex;
     align-items: center;
+    // justify-content: center;
 
     .SelectedPlayer {
       margin-right: 20px;

@@ -2,6 +2,9 @@
 @import 'styles/variables.scss';
 
 .App {
+  max-width: 700px;
+  margin: 0 auto;
+
   .App-linkMapWrap {
     display: flex;
     justify-content: center;
@@ -24,5 +27,55 @@
     font-weight: bold;
     font-size: larger;
     border-bottom: 1px dashed #ccc;
+  }
+
+  header {
+    position: relative;
+    padding-bottom: 165px;
+
+    h1 {
+      display: flex;
+      align-items: center;
+      padding: 0 0 5px 0;
+      border-bottom: 1px solid #999;
+
+      .logo {
+        width: 20px;
+        margin-right: 5px;
+      }
+
+      .logoText {
+        letter-spacing: -2px;
+        font-size: 2.5rem;
+        color: #333;
+      }
+    }
+
+    .headerImage {
+      position: absolute;
+      top: 0;
+      right: 10px;
+      transform: rotate(-2deg);
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-family: Georgia;
+      font-style: italic;
+      padding-right: 300px;
+
+
+
+      &:last-of-type {
+        margin-top: 15px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  footer {
+    .copyright a {
+      margin-left: 4px;
+    }
   }
 }

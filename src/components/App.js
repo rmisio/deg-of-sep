@@ -3,9 +3,7 @@
 // TODO: shorten placehold on small screens.
 // TODO: test with long names.
 // TODO: add in intro
-// TODO: surge deploy
 // TODO: ZION to Dr J
-// TODO: Baby blue, I heart you #CCC
 // TODO: update index.html + meta in there
 // TODO: lint this guy
 
@@ -17,7 +15,9 @@ import players from 'data/players';
 import FindLinkWorker from 'workerize-loader!core/findLink';
 import LinkMap from 'components/LinkMap';
 import { ReactComponent as FindingLinkSpinner } from 'img/three-dots.svg';
+import { ReactComponent as NbaLogo } from 'img/nba-logoman-word-white.svg';
 import NodeSelect from 'components/nodeSelect/NodeSelect';
+import kevinBacon from 'img/kevin-bacon.png';
 import './App.scss';
 
 function App() {
@@ -41,8 +41,6 @@ function App() {
             .findLink(selectedPlayers[0].id, selectedPlayers[1].id);
       } catch (e) {
         // TODO: test me
-        // console.log('find link errah');
-        // console.dir(e);
         lData = e;
         findLinkError = e;
         console.error(e);
@@ -130,6 +128,30 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        <h1>
+          <NbaLogo className="logo" />
+          <div className="logoText">Degrees of Separation</div>
+        </h1>
+        <img
+          className="headerImage"
+          src={kevinBacon}
+          alt="Kevin Bacon Straight Ballin"
+        />
+        <p>
+          Ever hear of <a href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon." target="_blank">
+          Six Degrees of Kevin Bacon</a>? Well, this is like that, but for NBA players.
+        </p>
+        <p>
+          So if you've every dreamed of finding the link between Lebron James and
+          Dr. J, today your dream comes true. You're welcome!&nbsp;
+          <span
+            className="bowingEmoji"
+            role="img"
+            aria-label="man bowing"
+          >🙇‍</span>
+        </p>
+      </header>
       <NodeSelect
         onPlayerChange={handlePlayerChange}
       />
@@ -138,6 +160,17 @@ function App() {
         {linkMapSpinner}
         {linkMap}
       </div>
+      <footer>
+        <div className="copyright">
+          &copy; 2020
+          <a
+            href="https://robmisio.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >robmisio.com</a>
+        </div>
+        {/* { // TODO: add github link } */}
+      </footer>
     </div>
   );
 }
