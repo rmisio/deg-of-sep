@@ -1,22 +1,12 @@
 // http://devfacts.com/media-queries-breakpoints-2020/
-// $mq-breakpoints: (
-//   small: 420px,
-//   medium: 768px,
-//   large: 992px,
-//   xLarge: 1200px,
-// );
+$mq-breakpoints: (
+  mobileSmall: 440px,
+  mobile: 570px,
+);
 
-// $clrPrimary: #1D428A;
-// $clrLinkBorder: #000;
-
-// TODO: abstract the color names
 $clrBackground: rgb(251,251,251);
-// $clrMaroon: #7b1a32;
-// $clrGoldish: #ad6f33;
 $clrText: rgb(51,51,51);
 $clrLink: #1a99aa;
 $clrOrange: #df6c4f;
 $clrYellow: #ecd06f;
 $clrError: red;
-
-// todo: link color;

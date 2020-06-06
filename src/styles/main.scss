@@ -3,6 +3,9 @@
 
 html {
   box-sizing: border-box;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: $clrText;
 }
 
 *,
@@ -13,9 +16,6 @@ html {
 
 body {
   padding: 20px;
-  font-size: 18px;
-  font-family: sans-serif;
-  color: $clrText;
 }
 
 input[type=text], textarea {
