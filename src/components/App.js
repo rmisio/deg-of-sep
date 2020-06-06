@@ -130,32 +130,34 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        <h1>
-          <NbaLogo className="logo" />
-          <div className="logoText">Degrees of Separation</div>
-        </h1>
-        <img
-          className="headerImage"
-          src={kevinBacon}
-          alt="Kevin Bacon Straight Ballin"
+      <div className="App-content">
+        <header>
+          <h1>
+            <NbaLogo className="logo" />
+            <div className="logoText">Degrees of Separation</div>
+          </h1>
+          <img
+            className="headerImage"
+            src={kevinBacon}
+            alt="Kevin Bacon Straight Ballin"
+          />
+          <p>
+            Ever hear of <a href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon." target="_blank">
+            Six Degrees of Kevin Bacon</a>? Well, this is like that, but for NBA players.
+          </p>
+          <p>
+            So if you've every dreamed of finding the link between Lebron James and
+            Kareem Abdul-Jabbar, today your dream comes true.
+          </p>
+        </header>
+        <NodeSelect
+          onPlayerChange={handlePlayerChange}
         />
-        <p>
-          Ever hear of <a href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon." target="_blank">
-          Six Degrees of Kevin Bacon</a>? Well, this is like that, but for NBA players.
-        </p>
-        <p>
-          So if you've every dreamed of finding the link between Lebron James and
-          Kareem Abdul-Jabbar, today your dream comes true.
-        </p>
-      </header>
-      <NodeSelect
-        onPlayerChange={handlePlayerChange}
-      />
-      {resultLine}
-      <div className="App-linkMapWrap">
-        {linkMapSpinner}
-        {linkMap}
+        {resultLine}
+        <div className="App-linkMapWrap">
+          {linkMapSpinner}
+          {linkMap}
+        </div>
       </div>
       <footer>
         <div className="copyright">
@@ -166,7 +168,6 @@ function App() {
             rel="noopener noreferrer"
           >robmisio.com</a>
         </div>
-        {/* { // TODO: add github link } */}
       </footer>
     </div>
   );
