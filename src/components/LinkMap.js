@@ -7,20 +7,26 @@ import './LinkMap.scss';
 function LinkMap(props) {
   let links = [];
 
-  const createPlayer = data => (
-    <div className="LinkMap-playerWrap" key={data.playerID}>
-      <Player
-        playerID={data.playerID}
-        size={props.playerSize}
-      />    
-      <div className="LinkMap-playerWrapNameArea">
-        <div className="LinkMap-playerWrapNameAreaInner">
-          <div className="LinkMap-playerWrapNum">{data.number}</div>
-          <div className="LinkMap-playerWrapName"><span>{data.name.split(' ')[0]}</span> <span>{data.name.split(' ')[1]}</span></div>
+  const createPlayer = data => {
+    const playerNameLengthClass = data.name.length > 20 ?
+      'LinkMap-playerWrapNameArea LinkMap-playerWrapNameAreaLongAssName' :
+      'LinkMap-playerWrapNameArea';
+
+    return (
+      <div className="LinkMap-playerWrap" key={data.playerID}>
+        <Player
+          playerID={data.playerID}
+          size={props.playerSize}
+        />    
+        <div className={playerNameLengthClass}>
+          <div className="LinkMap-playerWrapNameAreaInner">
+            <div className="LinkMap-playerWrapNum">{data.number}</div>
+            <div className="LinkMap-playerWrapName"><span>{data.name.split(' ')[0]}</span> <span>{data.name.split(' ')[1]}</span></div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   props.linkData.forEach((link, index) => {
     if (index === props.linkData.length - 1) return;

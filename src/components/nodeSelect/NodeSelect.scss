@@ -1,3 +1,6 @@
+@import '~sass-mq';
+@import 'styles/variables.scss';
+
 .NodeSelect {
   .react-autosuggest__container {
     position: relative;
@@ -57,15 +60,30 @@
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 1.25rem;
+
+    // todo: sync up 620 with app.scss;
+    @include mq(0, 620px) {
+      font-size: 1rem;
+    }    
   }
 
   .NodeList-selectedPlayers {
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 25px;
+
+    @include mq($until: 'mobile') {
+      flex-direction: column;
+      align-items: flex-start;
+    }
 
     .SelectedPlayer {
       margin-right: 20px;
+
+      @include mq($until: 'mobile') {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
     }
   }
 }

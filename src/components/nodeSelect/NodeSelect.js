@@ -81,8 +81,8 @@ function NodeSelect(props) {
   const handleSuggestionClearRequested = () => setSuggestions([]);
 
   const placeholder = players.length === 0 ?
-    'Enter a player\'s name (e.g. Lebron James)' :
-    'Enter another player\'s name (e.g. Bill Russell)';
+    'Enter first player\'s name' :
+    'Enter second player\'s name';
 
   const autosuggest = players.length < 2 ?
     (
@@ -120,8 +120,18 @@ function NodeSelect(props) {
           >Start Over</button>        
         </div>
       ) : null;
+
+    const selectedPlayersStyle = {};
+
+    if (players.length === 2) {
+      selectedPlayersStyle.marginTop = 40;
+    }
+      
     selectedPlayers = (
-      <div className="NodeList-selectedPlayers">
+      <div
+        className="NodeList-selectedPlayers"
+        style={selectedPlayersStyle}
+      >
         {
           players.map(player =>
             <SelectedPlayer
@@ -138,10 +148,7 @@ function NodeSelect(props) {
   }
   
   return (
-    <div
-      className="NodeSelect"
-      style={{ marginBottom: 25 }}
-    >
+    <div className="NodeSelect">
       {autosuggest}
       {selectedPlayers}
     </div>

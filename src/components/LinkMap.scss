@@ -32,17 +32,10 @@
           align-self: start;
           height: 100%;
         }
+      }
 
-        .LinkMap-playerWrapName {
-          // width: min-content;
-          // span {
-          //   font-weight: bold;
-
-          //   &:first-child {
-          //     font-weight: normal;
-          //   }
-          // }
-        }
+      &.LinkMap-playerWrapNameAreaLongAssName .LinkMap-playerWrapName {
+        width: min-content;
       }
     }
   }

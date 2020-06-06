@@ -8,6 +8,7 @@
 // TODO: lint this guy
 // todo: link between kareem abdul jabar in intro
 // todo: byron scott showing up with james harden image
+// todo: same key in linkmap when same team displayeed twice
 
 import React, { useState } from 'react';
 import teams from 'data/teams';
