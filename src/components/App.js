@@ -6,6 +6,8 @@
 // TODO: ZION to Dr J
 // TODO: update index.html + meta in there
 // TODO: lint this guy
+// todo: link between kareem abdul jabar in intro
+// todo: byron scott showing up with james harden image
 
 import React, { useState } from 'react';
 import teams from 'data/teams';
@@ -144,12 +146,7 @@ function App() {
         </p>
         <p>
           So if you've every dreamed of finding the link between Lebron James and
-          Dr. J, today your dream comes true. You're welcome!&nbsp;
-          <span
-            className="bowingEmoji"
-            role="img"
-            aria-label="man bowing"
-          >🙇‍</span>
+          Kareem Abdul-Jabbar, today your dream comes true.
         </p>
       </header>
       <NodeSelect

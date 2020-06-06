@@ -12,18 +12,10 @@
     align-items: center;
     flex-direction: column;    
 
-    // position: relative;
-
     .LinkMap-playerWrapNameArea {
-      // position: absolute;
-      // bottom: -10px;
-      // left: -20px;
-      // right: -20px;
-      // transform: translateY(100%);
       display: flex;
       justify-content: center;
       margin-top: 10px;
-      font-weight: 300;
 
       // todo: put a max width here and width: min content on break
       // also on tight mq sizes;

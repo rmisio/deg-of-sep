@@ -1,4 +1,5 @@
 // todo: no shrink on avatar for search result players;
+// todo: force footer to bottom of page;
 @import 'styles/variables.scss';
 
 .App {
@@ -10,7 +11,8 @@
     justify-content: center;
     align-items: center;
     min-height: 180px;
-    margin-top: 30px;
+    margin-top: 40px;
+    margin-bottom: 50px;
 
     .App-findingLinkSpinner {
       fill: #999;
@@ -31,7 +33,8 @@
 
   header {
     position: relative;
-    padding-bottom: 165px;
+    min-height: 360px;
+    margin-bottom: 30px;
 
     h1 {
       display: flex;
@@ -41,7 +44,7 @@
 
       .logo {
         width: 20px;
-        margin-right: 5px;
+        margin-right: 8px;
       }
 
       .logoText {
@@ -53,18 +56,21 @@
 
     .headerImage {
       position: absolute;
-      top: 0;
+      top: -10px;
       right: 10px;
       transform: rotate(-2deg);
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-family: Georgia;
       font-style: italic;
-      padding-right: 300px;
+      line-height: 1.3;
+      padding-right: 323px;
 
-
+      &:first-of-type {
+        margin-top: 25px;
+      }
 
       &:last-of-type {
         margin-top: 15px;
@@ -74,6 +80,9 @@
   }
 
   footer {
+    text-align: center;
+    font-size: 0.85rem;
+
     .copyright a {
       margin-left: 4px;
     }
