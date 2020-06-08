@@ -62,7 +62,7 @@
     font-size: 1.25rem;
 
     // todo: sync up 620 with app.scss;
-    @include mq(0, 620px) {
+    @include mq(0px, 620px) {
       font-size: 1rem;
     }    
   }

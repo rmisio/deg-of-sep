@@ -24,7 +24,7 @@ function NodeSelect(props) {
     }
   };
 
-  const handleSuggestionsFetchRequested = ({ value, reason }) => {
+  const handleSuggestionsFetchRequested = async ({ value, reason }) => {
     if (reason !== 'input-changed')  return;
 
     const inputVal = value.trim();

@@ -54,7 +54,7 @@
           margin-right: 8px;
           margin-left: 5px;
 
-          @include mq(0, 650px) {
+          @include mq(0px, 650px) {
             width: 15px;
           }
 
@@ -62,7 +62,7 @@
             width: 18px;
           }
 
-          @include mq(0, 'mobileSmall') {
+          @include mq(0px, 'mobileSmall') {
             width: 15px;
           }
         }
@@ -72,15 +72,15 @@
           font-size: 2.3rem;
           color: #333;
 
-          @include mq(0, 735px) {
+          @include mq(0px, 735px) {
             font-size: 1.9rem;
           }
 
-          @include mq(0, 650px) {
+          @include mq(0px, 650px) {
             font-size: 1.7rem;
           }
 
-          @include mq(0, 600px) {
+          @include mq(0px, 600px) {
             font-size: 1.55rem;
           }
 
@@ -88,19 +88,19 @@
             font-size: 2.1rem;
           }
 
-          @include mq(0, 'mobileSmall') {
+          @include mq(0px, 'mobileSmall') {
             font-size: 1.7rem;
           }
 
-          @include mq(0, 400px) {
+          @include mq(0px, 400px) {
             font-size: 1.6rem;
           }
 
-          @include mq(0, 380px) {
+          @include mq(0px, 380px) {
             font-size: 1.5rem;
           }
 
-          @include mq(0, 330px) {
+          @include mq(0px, 330px) {
             font-size: 1.4rem;
           }
         }
@@ -112,7 +112,7 @@
         right: 10px;
         transform: rotate(-2deg);
 
-        @include mq(0, 660px) {
+        @include mq(0px, 660px) {
           width: 280px;
           right: 20px;
         }
@@ -128,7 +128,7 @@
           margin-top: 40px;
         }
 
-        @include mq(0, 450px) {
+        @include mq(0px, 450px) {
           width: 60%;
           left: -29px;
           margin-top: 35px;
@@ -145,7 +145,7 @@
         &:first-of-type {
           margin-top: 20px;
 
-          @include mq(0, 450px) {
+          @include mq(0px, 450px) {
             margin-top: 15px;
           }
         }
@@ -155,15 +155,15 @@
           margin-bottom: 30px;
         }
 
-        @include mq(0, 690px) {
+        @include mq(0px, 690px) {
           font-size: 1.15rem;
         }
 
-        @include mq(0, 620px) {
+        @include mq(0px, 620px) {
           font-size: 1.05rem;
         }
 
-        @include mq(0, 580px) {
+        @include mq(0px, 580px) {
           font-size: 1rem;
         }
 

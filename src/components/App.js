@@ -9,13 +9,14 @@
 // todo: link between kareem abdul jabar in intro
 // todo: byron scott showing up with james harden image
 // todo: same key in linkmap when same team displayeed twice
+// todo: image placeholder on mobile
+// todo: result count 1 too high
+// todo: scrollbar popping in and out
 
-import React, { useState } from 'react';
-import teams from 'data/teams';
-import rosters from 'data/rosters';
-import players from 'data/players';
+import React, { useState, useRef } from 'react';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import FindLinkWorker from 'workerize-loader!core/findLink';
+import getData from 'core/getData';
 import LinkMap from 'components/LinkMap';
 import { ReactComponent as FindingLinkSpinner } from 'img/three-dots.svg';
 import { ReactComponent as NbaLogo } from 'img/nba-logoman-word-white.svg';
@@ -26,14 +27,37 @@ import './App.scss';
 function App() {
   const [linkMapData, setLinkMapData] = useState(null);
   const [findingLink, setFindingLink] = useState(false);
+  const _getData = useRef(null);
 
   const handlePlayerChange = async selectedPlayers => {
+    console.dir(selectedPlayers);
+
     let lData = null;
+
+    if (_getData.current) _getData.current.cancel();
 
     if (selectedPlayers && selectedPlayers.length === 2) {
       setFindingLink(true);
       setLinkMapData(null);
-      
+
+      _getData.current = getData();
+      console.log('cur getdata is', _getData.current.now);
+    
+      // test: failure / cancel of the getData process
+      let data;
+
+      try {
+        data = await _getData.current.promise;
+      } catch (e) {
+        if (e !== 'canceled') {
+          console.error('There was an error obtaining the player data:', e);
+        }
+
+        return;
+      }
+
+      const { teams, rosters, players } = data;
+
       const findLinkWorker = FindLinkWorker();
       let link = null;
       let findLinkError = null;
@@ -51,6 +75,7 @@ function App() {
 
       if (link === null && !findLinkError) {
         // There is no link between the players
+        // TODO: test this scenario
         lData = Infinity;
       }
 
