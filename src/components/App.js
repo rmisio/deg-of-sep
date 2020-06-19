@@ -1,16 +1,10 @@
-// TODO: make readme. also for tetris.
-// TODO: flex no shrink player avatar
-// TODO: shorten placehold on small screens.
-// TODO: test with long names.
-// TODO: add in intro
-// TODO: ZION to Dr J
-// TODO: update index.html + meta in there
-// TODO: lint this guy
-// todo: link between kareem abdul jabar in intro
-// todo: byron scott showing up with james harden image
-// todo: same key in linkmap when same team displayeed twice
-
-import React, { useState } from 'react';
+// TODO: need to size down player images for small avatars
+// TODO: player data should be dynamically imported in. As of now, it's adding
+// 300k+ to the main chunk 🤦. Furthermore, since the find link worker is in a
+// webworker, it ends up in a seperate chunk with the player data duplicated in
+// there 🤦.
+   
+import React, { useState, useRef } from 'react';
 import teams from 'data/teams';
 import rosters from 'data/rosters';
 import players from 'data/players';
@@ -26,6 +20,7 @@ import './App.scss';
 function App() {
   const [linkMapData, setLinkMapData] = useState(null);
   const [findingLink, setFindingLink] = useState(false);
+  const waitingOnPlayers = useRef(null);
 
   const handlePlayerChange = async selectedPlayers => {
     let lData = null;
@@ -37,6 +32,7 @@ function App() {
       const findLinkWorker = FindLinkWorker();
       let link = null;
       let findLinkError = null;
+      waitingOnPlayers.current = [selectedPlayers[0].id, selectedPlayers[1].id];
 
       try {
         link =
@@ -48,6 +44,14 @@ function App() {
         findLinkError = e;
         console.error(e);
       }
+
+      // TODO: rather than ignoring stale player link data coming back, we should
+      // cancel the no longer needed process (once findLink implements cancel
+      // functionality).
+      if (
+        waitingOnPlayers.current[0] !==  selectedPlayers[0].id ||
+        waitingOnPlayers.current[1] !==  selectedPlayers[1].id
+      ) return;
 
       if (link === null && !findLinkError) {
         // There is no link between the players
@@ -93,7 +97,6 @@ function App() {
     <FindingLinkSpinner className="App-findingLinkSpinner" /> :
     null;
 
-  // TODO: maybe some result line icons...?
   let resultLine = null;
 
   if (!findingLink) {
@@ -118,7 +121,7 @@ function App() {
         </p>
       );
     } else if (linkMap) {
-      const degOfSep = linkMapData.length - 1;
+      const degOfSep = linkMapData.length - 2;
       resultLine = (
         <p className={resultClass}>
           There {`${degOfSep === 1 ? 'is ' : 'are '}`}
@@ -143,7 +146,7 @@ function App() {
             alt="Kevin Bacon Straight Ballin"
           />
           <p>
-            Ever hear of <a href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon." target="_blank">
+            Ever hear of <a href="https://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon#:~:text=Six%20Degrees%20of%20Kevin%20Bacon%20or%20%22Bacon's%20Law%22%20is%20a,and%20prolific%20actor%20Kevin%20Bacon." target="_blank" rel="noopener noreferrer">
             Six Degrees of Kevin Bacon</a>? Well, this is like that, but for NBA players.
           </p>
           <p>

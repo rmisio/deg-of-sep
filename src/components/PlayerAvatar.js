@@ -1,5 +1,3 @@
-// todo: move images to cloudinary
-
 import React, {
   useCallback,
   useRef,

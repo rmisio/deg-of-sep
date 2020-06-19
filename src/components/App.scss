@@ -1,5 +1,3 @@
-// todo: no shrink on avatar for search result players;
-// todo: force footer to bottom of page;
 @import '~sass-mq';
 @import 'styles/variables.scss';
 
@@ -24,6 +22,10 @@
         fill: #999;
         width: 55px;
       }
+    }
+
+    .App-linkMapResult {
+      margin-top: 30px;
     }
 
     .App-linkMapResultError {

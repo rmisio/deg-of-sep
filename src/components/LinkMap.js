@@ -43,7 +43,7 @@ function LinkMap(props) {
 
     links = links.concat([
       <LinkConnector key={Math.floor(Math.random() * 1000) + Date.now()} />,
-      <Team teamAbbr={link.teamAbbr} key={link.teamAbbr} />,
+      <Team teamAbbr={link.teamAbbr} key={`${link.teamAbbr}-${index}`} />,
       <LinkConnector key={Math.floor(Math.random() * 1000) + Date.now()} />,
     ]);
 

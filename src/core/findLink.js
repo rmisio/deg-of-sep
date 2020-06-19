@@ -1,4 +1,5 @@
-// TODO: add todo about cancel procss
+// TODO: implement a way to cancel a specific find link request
+// TODO: player data should be code split in
 
 import players from 'data/players';
 import rosters from 'data/rosters';
@@ -64,7 +65,6 @@ export function findLink(playerA, playerB) {
     }),
   ];
 
-  // TODO: ensure players aren't checked twice
   const teammatesChecked = [];
 
   while (!endNode && teammates.length) {
